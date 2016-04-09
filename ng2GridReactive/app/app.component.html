@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <header style="background-position: 0px 0px;">
+
+    <div class="section_overlay">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['Content',{_owner: ''}]">Angular 2 app</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="menu">
+                  <li><a [routerLink]="['Content',{_owner: ''}]">Home</a></li>
+                  <li class="divider"></li>
+                  <li><a [routerLink]="['Content',{_owner: 'drzava'}]">Drzava</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'naseljeno_mesto'}]">Naseljeno mesto</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'banka'}]">Banka</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'valute'}]">Valute</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'kursna_lista'}]">Kursna lista</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'kurs_u_valuti'}]">Kurs u valuti</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'klijent'}]">Klijent</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'racuni_pravnih_lica'}]">Racuni pravnih lica</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'ukidanje'}]">Ukidanje</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'dnevno_stanje_racuna'}]">Dnevno stanje racuna</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'vrste_placanja'}]">Vrste placanja</a></li>
+                  <li><a [routerLink]="['Content',{_owner: 'analitika_izvoda'}]">Analitika izvoda</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+      </nav>
+
+
+      <router-outlet></router-outlet>
+    </div>
+
+  </header>
+
+</body>
+
+</html>

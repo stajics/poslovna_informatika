@@ -1,0 +1,129 @@
+<html>
+
+<head>
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular 2 Grid</title>
+
+  <!-- Google Font -->
+  <link href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- Preloader -->
+  <link rel="stylesheet" href="bootstrap_theme/brandy/css/preloader.css" type="text/css" media="screen, print" />
+
+
+
+  <!-- Animate CSS-->
+  <link rel="stylesheet" href="bootstrap_theme/brandy/css/animate.css">
+
+  <!-- Bootstrap -->
+  <link href="bootstrap_theme/brandy/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Style -->
+  <link href="bootstrap_theme/brandy/css/style.css" rel="stylesheet">
+  <link href="bootstrap_theme/brandy/style.css" rel="stylesheet">
+  <!-- For ngGrid -->
+  <!--<link href="node_modules/ag-grid/styles/ag-grid.css" rel="stylesheet" />-->
+  <!--<link href="node_modules/ag-grid/styles/theme-fresh.css" rel="stylesheet" />-->
+
+  <!-- 1. Load libraries -->
+  <!-- IE required polyfills, in this exact order -->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
+
+  <!--ng2-bs3-modal-->
+  <!-- jquery ovde -->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>-->
+  <script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>
+
+  <!--ag-grid-->
+  <script src="node_modules/ag-grid/dist/ag-grid.js"></script>
+
+
+  <!-- =========================
+     SCRIPTS for theme
+     ============================== -->
+
+  <!-- 2. Configure SystemJS -->
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    System.config({
+      packages: {
+        lib: {
+          format: 'register',
+          defaultExtension: 'js'
+        },
+        'ag-grid-ng2': {
+          defaultExtension: "js"
+        },
+        'ag-grid': {
+          defaultExtension: "js"
+        },
+        'ng2-bs3-modal': {
+          defaultExtension: "js"
+        },
+        '@ngrx/store': {
+          main: 'index.js',
+          defaultExtension: "js"
+        },
+        'rxjs': {
+          defaultExtension: 'js'
+        }
+      },
+      map: {
+        'ag-grid-ng2': 'node_modules/ag-grid-ng2',
+        'ag-grid': 'node_modules/ag-grid',
+        'ng2-bs3-modal': 'node_modules/ng2-bs3-modal',
+        '@ngrx/store': 'node_modules/@ngrx/store/dist',
+        'rxjs': 'node_modules/rxjs'
+      }
+    });
+
+
+    System.import('app/main')
+      .then(null, console.error.bind(console));
+  </script>
+</head>
+
+<!-- 3. Display the application -->
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="status">&nbsp;</div>
+  </div>
+
+  <my-app>Loading...</my-app>
+</body>
+
+
+<script src="bootstrap_theme/brandy/js/jquery.min.js"></script>
+<script src="bootstrap_theme/brandy/js/bootstrap.min.js"></script>
+<!--<script src="bootstrap_theme/brandy/js/jquery.nicescroll.js"></script> NE RADI!-->
+<script src="bootstrap_theme/brandy/js/owl.carousel.js"></script>
+<script src="bootstrap_theme/brandy/js/wow.js"></script>
+<script src="bootstrap_theme/brandy/js/script.js"></script>
+
+<script type="text/javascript" src="xmlToJSON.js"></script>
+</html>

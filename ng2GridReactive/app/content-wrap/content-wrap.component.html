@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <div style="height:100%" class="home_text wow fadeInUp animated">
+        <h2>{{_title}}</h2>
+        <my-ag-grid #grid [clearSelectionOnInit]="'true'" (setTitle)="_title=$event"></my-ag-grid>
+        <my-detail-panel  #panel [state]=grid.state (selectElement)="grid.selectElement($event)" (refreshRowData)="grid.refreshRowData($event)"></my-detail-panel>
+        <button type="button" name="button" (click)="test()">Content Wrap Test</button>
+      </div>
+    </div>
+  </div>
+</div>

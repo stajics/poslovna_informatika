@@ -1,0 +1,12 @@
+<modal #modal [keyboard]="false" [backdrop]="'static'" (onClose)="closeModal()">
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">{{_modalOwner}}</h4>
+  </modal-header>
+  <modal-body>
+    <div>
+      <my-ag-grid #grid [isInModal]="'true'"></my-ag-grid>
+      <my-detail-panel #panel [state]=grid.state (selectElement)="grid.selectElement($event)"></my-detail-panel>
+    </div>
+  </modal-body>
+  <modal-footer></modal-footer>
+</modal>

@@ -1,0 +1,25 @@
+<div *ngIf="_owner && _showGrid">
+  <!-- Toolbar -->
+  <input type="file" name="img" (change)="fileSelected($event)">
+  <button class="btn btn-default" type="button" name="button" (click)="genRTGSandClearing()">Generisi nalog za mb transfer</button>
+  <button class="btn btn-default" type="button" name="button" (click)="getIzvodIzvoda()">Izvod izvoda</button>
+  <button class="btn btn-default" type="button" name="button" (click)="selectPrevious()">Prevous</button>
+  <button class="btn btn-default" type="button" name="button" (click)="selectNext()">Next</button>
+  <button class="btn btn-default" type="button" name="button" (click)="delete()">Delete</button>
+  <button *ngIf="state === 'view'" class="btn btn-default icon-edit" type="button" name="button" (click)="edit()"></button>
+  <button *ngIf="state === 'edit'" class="btn btn-default" type="button" name="button" (click)="view()">View</button>
+  <div *ngIf="_children.length > 0" class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Next <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="#child of _children;"><a (click)="nextShow(child)">{{child}}</a></li>
+    </ul>
+  </div>  <!-- /Toolbar -->
+
+  <!-- Grid -->
+  <ag-grid-ng2 #agGrid style="width: 100%;height: 150px;" class="ag-fresh" [gridOptions]="_gridOptions" [columnDefs]="columnDefs" [showToolPanel]="showToolPanel" [rowData]="rowData | async" enableFilter enableSorting suppressCellSelection rowHeight="30"
+    rowSelection="single" (gridReady)="gridReady()" (selectionChanged)="selectionChanged()">
+  </ag-grid-ng2>   <!-- /Grid -->
+  <button type="button" class="btn btn-default" (click)="test()">Grid Test</button>
+</div>

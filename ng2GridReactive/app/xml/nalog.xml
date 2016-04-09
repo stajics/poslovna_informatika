@@ -1,0 +1,17 @@
+<nalog>
+  <ID_poruke>1234</ID_poruke>
+  <duznik_nalogodavac>2</duznik_nalogodavac>
+  <svrha_placanja>2</svrha_placanja>
+  <poverilac_primalac>2</poverilac_primalac>
+  <datum_naloga>2016-04-08</datum_naloga>
+  <datum_valute>2016-04-08</datum_valute>
+  <racun_duznika>111</racun_duznika>
+  <model_zaduzenja>2</model_zaduzenja>
+  <poziv_na_broj_zaduzenja>2</poziv_na_broj_zaduzenja>
+  <racun_poverioca>333</racun_poverioca>
+  <model_odobrenja>2</model_odobrenja>
+  <poziv_na_broj_odobrenja>2</poziv_na_broj_odobrenja>
+  <iznos>1000</iznos>
+  <oznaka_valute>USD</oznaka_valute>
+  <hitno>1</hitno>
+</nalog>

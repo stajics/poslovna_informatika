@@ -1,0 +1,506 @@
+<!--Drzava -->
+<form *ngIf="_owner === 'drzava'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="state === 'edit'" ngControl="sifra_drzave" [ngModel]="(_selectedElements| async)?.drzava?.sifra_drzave">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" class="form-control" required ngControl="naziv_drzave" [ngModel]="(_selectedElements| async)?.drzava?.naziv_drzave">
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Drzava -->
+
+<!--Klijent -->
+<form *ngIf="_owner === 'klijent'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="state === 'edit'" ngControl="ID_klijenta" [ngModel]="(_selectedElements| async)?.klijent?.ID_klijenta">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Ime</label>
+    <input type="text" class="form-control" required ngControl="ime" [ngModel]="(_selectedElements| async)?.klijent?.ime">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Prezime</label>
+    <input type="text" class="form-control" required ngControl="prezime" [ngModel]="(_selectedElements| async)?.klijent?.prezime">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Pravno lice (da/ne)</label>
+    <input type="text" class="form-control" required ngControl="pravno_lice" [ngModel]="(_selectedElements| async)?.klijent?.pravno_lice">
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Klijent -->
+
+<!--Nasaljeno mesto -->
+<form *ngIf="_owner === 'naseljeno_mesto'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="sifra_mesta" [ngModel]="(_selectedElements| async)?.naseljeno_mesto?.sifra_mesta">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="naziv" [ngModel]="(_selectedElements| async)?.naseljeno_mesto?.naziv">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">PTT</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="PTToznaka" [ngModel]="(_selectedElements| async)?.naseljeno_mesto?.PTToznaka">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Drzava</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="drzava" [ngModel]="(_selectedElements| async)?.naseljeno_mesto?.drzava">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('drzava')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Nasaljeno mesto -->
+
+<!--Banka -->
+<form *ngIf="_owner === 'banka'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="state === 'edit'" ngControl="ID_banke" [ngModel]="(_selectedElements| async)?.banka?.ID_banke">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Sifra banke</label>
+    <input type="text" class="form-control" required ngControl="sifra_banke" [ngModel]="(_selectedElements| async)?.banka?.sifra_banke">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>PIB</label>
+    <input type="text" class="form-control" required ngControl="PIB" [ngModel]="(_selectedElements| async)?.banka?.PIB">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Naziv</label>
+    <input type="text" class="form-control" required ngControl="naziv" [ngModel]="(_selectedElements| async)?.banka?.naziv">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Adresa</label>
+    <input type="text" class="form-control" required ngControl="adresa" [ngModel]="(_selectedElements| async)?.banka?.adresa">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" required ngControl="email" [ngModel]="(_selectedElements| async)?.banka?.email">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Web</label>
+    <input type="text" class="form-control" ngControl="web" [ngModel]="(_selectedElements| async)?.banka?.web">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Telefon</label>
+    <input type="text" class="form-control" required ngControl="telefon" [ngModel]="(_selectedElements| async)?.banka?.telefon">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Fax</label>
+    <input type="text" class="form-control" ngControl="fax" [ngModel]="(_selectedElements| async)?.banka?.fax">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label>Banka?</label>
+    <input type="text" class="form-control" ngControl="banka" [ngModel]="(_selectedElements| async)?.banka?.banka">
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Banka -->
+
+<!--Valute -->
+<form *ngIf="_owner === 'valute'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="ID_valute" [ngModel]="(_selectedElements| async)?.valute?.ID_valute">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Zvanicna sifra</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="zvanicna_sifra" [ngModel]="(_selectedElements| async)?.valute?.zvanicna_sifra">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Naziv</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="naziv" [ngModel]="(_selectedElements| async)?.valute?.naziv">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Domicilna</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="domicilna" [ngModel]="(_selectedElements| async)?.valute?.domicilna">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Drzava</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="drzava" [ngModel]="(_selectedElements| async)?.valute?.drzava">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('drzava')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Valute -->
+
+<!--Kursna lista -->
+<form *ngIf="_owner === 'kursna_lista'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="ID_kursne_liste" [ngModel]="(_selectedElements| async)?.kursna_lista?.ID_kursne_liste">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum" [ngModel]="(_selectedElements| async)?.kursna_lista?.datum">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Broj kursne liste</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="broj_kursne_liste" [ngModel]="(_selectedElements| async)?.kursna_lista?.broj_kursne_liste">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Primenjuje se od</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="primenjuje_se_od" [ngModel]="(_selectedElements| async)?.kursna_lista?.primenjuje_se_od">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Banka</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="banka" [ngModel]="(_selectedElements| async)?.kursna_lista?.banka">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('banka')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Kursna lista -->
+
+<!--Kurs u valuti -->
+<form *ngIf="_owner === 'kurs_u_valuti'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="redni_broj" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.redni_broj">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Kupovni</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="kupovni" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.kupovni">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Srednji</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="srednji" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.srednji">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Prodajni</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="prodajni" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.prodajni">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Osnovna valuta</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="osnovna_valuta" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.osnovna_valuta">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('osnovna_valuta')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Prema valuti</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="prema_valuti" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.prema_valuti">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('prema_valuti')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Kursna lista</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="kursna_lista" [ngModel]="(_selectedElements| async)?.kurs_u_valuti?.kursna_lista">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('kursna_lista')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Kurs u valuti -->
+
+<!--Racuni pravnih lica -->
+<form *ngIf="_owner === 'racuni_pravnih_lica'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="ID_racuna" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.ID_racuna">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Broj racuna</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="broj_racuna" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.broj_racuna">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum otvaranja</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum_otvaranja" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.datum_otvaranja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Vazeci</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="vazeci" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.vazeci">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Banka</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="banka" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.banka">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('banka')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Klijent</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="klijent" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.klijent">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('klijent')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Valute</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="valute" [ngModel]="(_selectedElements| async)?.racuni_pravnih_lica?.valute">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('valute')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Racuni pravnih lica -->
+
+<!--Ukidanje -->
+<form *ngIf="_owner === 'ukidanje'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">ID</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="ID_ukidanja" [ngModel]="(_selectedElements| async)?.ukidanje?.ID_ukidanja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum ukidanja</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum_ukidanja" [ngModel]="(_selectedElements| async)?.ukidanje?.datum_ukidanja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Sredstva se prenose na racun</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="sredstva_se_prenose_na_racun" [ngModel]="(_selectedElements| async)?.ukidanje?.sredstva_se_prenose_na_racun">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Racun pravnih lica</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="racuni_pravnih_lica" [ngModel]="(_selectedElements| async)?.ukidanje?.racuni_pravnih_lica">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('racuni_pravnih_lica')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Ukidanje -->
+
+
+<!--Dnevno stanje racuna -->
+<form *ngIf="_owner === 'dnevno_stanje_racuna'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">Broj izvoda</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="broj_izvoda" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.broj_izvoda">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum prometa</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum_prometa" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.datum_prometa">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Predhodno stanje</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="predhodno_stanje" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.predhodno_stanje">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Promet u korist</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="promet_u_korist" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.promet_u_korist">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Promet na teret</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="promet_na_teret" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.promet_na_teret">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Novo stanje</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="novo_stanje" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.novo_stanje">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Racun pravnih lica</label>
+    <div class="input-group">
+      <input type="text" class="form-control" required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="racuni_pravnih_lica" [ngModel]="(_selectedElements| async)?.dnevno_stanje_racuna?.racuni_pravnih_lica">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('racuni_pravnih_lica')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Dnevno stanje racuna -->
+
+<!--Vrste placanja -->
+<form *ngIf="_owner === 'vrste_placanja'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">Oznaka vrste</label>
+    <input type="text" class="form-control" required [disabled]="state === 'edit'" ngControl="oznaka_vrste" [ngModel]="(_selectedElements| async)?.vrste_placanja?.oznaka_vrste">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Naziv vrste placanja</label>
+    <input type="text" class="form-control" required ngControl="naziv_vrste_placanja" [ngModel]="(_selectedElements| async)?.vrste_placanja?.naziv_vrste_placanja">
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Vrste placanja -->
+
+<!--Analitika izvoda -->
+<form *ngIf="_owner === 'analitika_izvoda'" #form="ngForm" (ngSubmit)="onSubmit(form.value);">
+  <div class="col-md-6 text-left form-group">
+    <label for="id">Broj stavke</label>
+    <input type="text" class="form-control" required [disabled]="(state === 'edit')|| isDisableFieldForNext" ngControl="broj_stavke" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.broj_stavke">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Duznik nalogodavac</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="duznik_nalogodavac" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.duznik_nalogodavac">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Svrha placanja</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="svrha_placanja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.svrha_placanja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Poverilac primalac</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="poverilac_primalac" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.poverilac_primalac">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum prijema</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum_prijema" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.datum_prijema">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Datum valute</label>
+    <input type="date" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="datum_valute" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.datum_valute">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Racun duznikac</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="racun_duznika" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.racun_duznika">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Model zaduzenja</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="model_zaduzenja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.model_zaduzenja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Poziv na broj zaduzenja</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="poziv_na_broj_zaduzenja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.poziv_na_broj_zaduzenja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Racun poverioca</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="racun_poverioca" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.racun_poverioca">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Model odobrenja</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="model_odobrenja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.model_odobrenja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Poziv na broj odobrenja</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="poziv_na_broj_odobrenja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.poziv_na_broj_odobrenja">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Hitno</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="hitno" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.hitno">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Iznos</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="iznos" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.iznos">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Tip greske</label>
+    <input type="text" class="form-control" required [disabled]="isDisableFieldForNext" ngControl="tip_greske" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.tip_greske">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="naziv">Status</label>
+    <input type="text" class="form-control"  [disabled]="isDisableFieldForNext" ngControl="status" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.status">
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Valute</label>
+    <div class="input-group">
+      <input type="text" class="form-control"  [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="valute" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.valute">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('valute')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Naseljno mesto</label>
+    <div class="input-group">
+      <input type="text" class="form-control" [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="naseljeno_mesto" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.naseljeno_mesto">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('naseljeno_mesto')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Dnevno stanje racuna</label>
+    <div class="input-group">
+      <input type="text" class="form-control"  required [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="dnevno_stanje_racuna" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.dnevno_stanje_racuna">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('dnevno_stanje_racuna')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-6 text-left form-group">
+    <label for="drzava">Vrste placanja</label>
+    <div class="input-group">
+      <input type="text" class="form-control"  [disabled]="(state === 'edit') || isDisableFieldForNext" ngControl="vrste_placanja" [ngModel]="(_selectedElements| async)?.analitika_izvoda?.vrste_placanja">
+      <span *ngIf="!isDisableFieldForNext" class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="savePanel(form.value); modalShow('vrste_placanja')">...</button>
+      </span>
+    </div>
+    <!-- /input-group -->
+  </div>
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-default" [disabled]="!form.form.valid">Submit</button>
+    <button type="button" name="button" (click)="test()">Detail panel Test</button>
+  </div>
+</form>
+<!--/Analitika izvoda -->
